@@ -54,6 +54,7 @@
         "mezzio/mezzio-helpers": "^5.6.0",
         "mezzio/mezzio-laminasrouter": "^3.0.1",
         "ramsey/uuid": "^4.1",
+        "symfony/serializer": "^5.3",
         "symfony/translation": "^5.3"
     },
     "require-dev": {
