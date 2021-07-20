@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App;
+namespace SELN\App\Application;
 
 /**
  * The configuration provider for the App module
@@ -32,10 +32,10 @@ class ConfigProvider
     {
         return [
             'invokables' => [
-                Handler\PingHandler::class => Handler\PingHandler::class,
+
             ],
             'factories'  => [
-                Handler\HomePageHandler::class => Handler\HomePageHandlerFactory::class,
+
             ],
         ];
     }
