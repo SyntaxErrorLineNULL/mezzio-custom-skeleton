@@ -1,19 +1,22 @@
 {
-    "name": "mezzio/mezzio-skeleton",
-    "description": "Laminas mezzio skeleton. Begin developing PSR-15 middleware applications in seconds!",
-    "type": "project",
-    "license": "BSD-3-Clause",
+    "name": "seln/test-mezzio",
+    "description": "test mezzio",
+    "type": "pet-project",
+    "license": "Apache License",
     "keywords": [
-        "laminas",
+        "rest-api",
         "mezzio",
         "skeleton",
         "middleware",
         "psr",
         "psr-7",
         "psr-11",
-        "psr-15"
+        "psr-15",
+        "jwt",
+        "doctrine",
+        "orm"
     ],
-    "homepage": "https://mezzio.dev",
+    "homepage": "",
     "support": {
         "docs": "https://docs.mezzio.dev/mezzio/",
         "issues": "https://github.com/mezzio/mezzio-skeleton/issues",
@@ -71,7 +74,7 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/App/src/"
+            "SELN\\App\\": "src/"
         }
     },
     "autoload-dev": {
