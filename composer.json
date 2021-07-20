@@ -56,7 +56,8 @@
         "ramsey/uuid": "^4.1",
         "symfony/serializer": "^5.3",
         "symfony/translation": "^5.3",
-        "symfony/validator": "^5.3"
+        "symfony/validator": "^5.3",
+        "vlucas/phpdotenv": "^5.3"
     },
     "require-dev": {
         "laminas/laminas-development-mode": "^3.3.0",
