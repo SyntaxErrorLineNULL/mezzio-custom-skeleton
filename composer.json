@@ -40,6 +40,7 @@
         "php": "^8.0",
         "composer/package-versions-deprecated": "^1.10.99",
         "doctrine/annotations": "^1.13",
+        "doctrine/cache": "^2.1",
         "doctrine/orm": "^2.9",
         "firebase/php-jwt": "^5.4",
         "jsoumelidis/zend-sf-di-config": "^0.5.1",
