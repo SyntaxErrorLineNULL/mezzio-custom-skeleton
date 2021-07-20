@@ -37,8 +37,10 @@
         }
     },
     "require": {
-        "php": "^7.3 || ~8.0.0",
+        "php": "^8.0",
         "composer/package-versions-deprecated": "^1.10.99",
+        "firebase/php-jwt": "^5.4",
+        "jsoumelidis/zend-sf-di-config": "^0.5.1",
         "laminas/laminas-component-installer": "^2.5.0",
         "laminas/laminas-config-aggregator": "^1.5.0",
         "laminas/laminas-diactoros": "^2.6.0",
@@ -46,7 +48,6 @@
         "laminas/laminas-zendframework-bridge": "^1.2.0",
         "mezzio/mezzio": "^3.5.0",
         "mezzio/mezzio-helpers": "^5.6.0",
-        "jsoumelidis/zend-sf-di-config": "^0.4",
         "mezzio/mezzio-laminasrouter": "^3.0.1"
     },
     "require-dev": {
