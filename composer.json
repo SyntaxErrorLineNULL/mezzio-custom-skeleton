@@ -55,7 +55,8 @@
         "mezzio/mezzio-laminasrouter": "^3.0.1",
         "ramsey/uuid": "^4.1",
         "symfony/serializer": "^5.3",
-        "symfony/translation": "^5.3"
+        "symfony/translation": "^5.3",
+        "symfony/validator": "^5.3"
     },
     "require-dev": {
         "laminas/laminas-development-mode": "^3.3.0",
