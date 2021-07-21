@@ -13,6 +13,7 @@ return [
         'dev_mode' => true,
         'cache_dir' => __DIR__ . '',
         'proxy_dir' => __DIR__ . '../../data/doctrine',
+        'proxy_namespace' => 'SELN\\App\\Doctrine\\Proxy\\',
         'simpleAnnotationReader' => false,
 
         // you should add any other path containing annotated entity classes
