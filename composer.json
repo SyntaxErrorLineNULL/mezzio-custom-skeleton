@@ -16,7 +16,7 @@
         "doctrine",
         "orm"
     ],
-    "homepage": "",
+    "homepage": "https://github.com/SyntaxErrorLineNULL/test-mezzio",
     "support": {
         "docs": "https://docs.mezzio.dev/mezzio/",
         "issues": "https://github.com/mezzio/mezzio-skeleton/issues",
@@ -61,6 +61,7 @@
         "symfony/serializer": "^5.3",
         "symfony/translation": "^5.3",
         "symfony/validator": "^5.3",
+        "tuupola/cors-middleware": "^1.2",
         "vlucas/phpdotenv": "^5.3"
     },
     "require-dev": {

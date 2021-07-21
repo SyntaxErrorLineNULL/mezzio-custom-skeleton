@@ -25,7 +25,12 @@ $aggregator = new ConfigAggregator([
     \Mezzio\ConfigProvider::class,
     \Mezzio\Router\ConfigProvider::class,
     \Laminas\Diactoros\ConfigProvider::class,
+
+    /** Start default App module config */
     \SELN\App\Application\ConfigProvider::class,
+
+    /** end module config */
+
     // Load application config in a pre-defined order in such a way that local settings
     // overwrite global settings. (Loaded as first to last):
     //   - `global.php`
