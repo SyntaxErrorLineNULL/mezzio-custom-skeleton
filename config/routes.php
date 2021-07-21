@@ -38,5 +38,5 @@ use Psr\Container\ContainerInterface;
  */
 
 return static function (Application $app, MiddlewareFactory $factory, ContainerInterface $container): void {
-
+    $app->get('/', \SELN\App\Api\Site\Handler\TestHandler::class, 'test-controller');
 };
