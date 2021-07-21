@@ -11,8 +11,8 @@ return [
         'development' => true,
         // if true, metadata caching is forcefully disabled
         'dev_mode' => true,
-        'cache_dir' => __DIR__ . '/../../var/cache/doctrine/cache',
-        'proxy_dir' => __DIR__ . '/../../var/cache/doctrine/proxy',
+        'cache_dir' => __DIR__ . '',
+        'proxy_dir' => __DIR__ . '../../data/doctrine',
         'simpleAnnotationReader' => false,
 
         // you should add any other path containing annotated entity classes
