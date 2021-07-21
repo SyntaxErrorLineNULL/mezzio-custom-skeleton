@@ -16,7 +16,7 @@
         "doctrine",
         "orm"
     ],
-    "homepage": "",
+    "homepage": "https://github.com/SyntaxErrorLineNULL/test-mezzio",
     "support": {
         "docs": "https://docs.mezzio.dev/mezzio/",
         "issues": "https://github.com/mezzio/mezzio-skeleton/issues",
