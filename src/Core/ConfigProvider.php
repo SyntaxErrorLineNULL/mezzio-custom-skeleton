@@ -9,7 +9,9 @@ declare(strict_types=1);
 namespace SELN\App\Core;
 
 
+use Doctrine\Common\Annotations\Reader;
 use Doctrine\ORM\EntityManagerInterface;
+use SELN\App\Core\Doctrine\AnnotationReaderFactory;
 use SELN\App\Core\Doctrine\EntityManagerFactory;
 
 class ConfigProvider
@@ -19,7 +21,8 @@ class ConfigProvider
         return [
             'dependencies' => [
                 'factories' => [
-                    EntityManagerInterface::class => EntityManagerFactory::class
+                    EntityManagerInterface::class => EntityManagerFactory::class,
+                    Reader::class => AnnotationReaderFactory::class
                 ]
             ]
         ];
