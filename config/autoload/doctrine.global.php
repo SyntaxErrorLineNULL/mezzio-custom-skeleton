@@ -11,13 +11,14 @@ return [
         'development' => true,
         // if true, metadata caching is forcefully disabled
         'dev_mode' => true,
-        'cache_dir' => __DIR__ . '',
+        'cache_dir' => __DIR__ . '../../data/doctrine/cache',
         'proxy_dir' => __DIR__ . '../../data/doctrine',
         'proxy_namespace' => 'SELN\\App\\Doctrine\\Proxy\\',
         'simpleAnnotationReader' => false,
 
         // you should add any other path containing annotated entity classes
         'metadata_dirs' => [__DIR__ . '/../../src/Application/Domain'],
+        'subscribers' => [],
         'connection' => [
             'driver' => 'pdo_pgsql',
             'host' => getenv('DB_HOST'),
