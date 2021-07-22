@@ -11,8 +11,11 @@ namespace SELN\App\Application\Domain\Entity;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\Id;
+use Doctrine\ORM\Mapping\Table;
+use SELN\App\Application\Infrastructure\Repository\DoctrineUserRepository;
 
-
+#[Entity(repositoryClass: DoctrineUserRepository::class)]
+#[Table(name: '`user`')]
 class User
 {
     #[Id]
