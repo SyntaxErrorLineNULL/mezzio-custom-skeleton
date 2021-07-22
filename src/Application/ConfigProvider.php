@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace SELN\App\Application;
 
 use Doctrine\ORM\EntityManagerInterface;
+use SELN\App\Application\Domain\Repository\UserRepository;
+use SELN\App\Application\Infrastructure\DoctrineRepositoryFactory;
 use SELN\App\Application\Infrastructure\EntityManagerFactory;
 use SELN\App\Application\Infrastructure\Flusher;
 use SELN\App\Application\Infrastructure\FlusherFactory;
@@ -29,7 +31,7 @@ class ConfigProvider
                 'factories' => [
                     EntityManagerInterface::class => EntityManagerFactory::class,
                     
-
+                    UserRepository::class => DoctrineRepositoryFactory::class, 
 
                     Flusher::class => FlusherFactory::class
                 ]
