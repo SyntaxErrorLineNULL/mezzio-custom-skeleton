@@ -14,6 +14,8 @@ use Laminas\ServiceManager\AbstractFactory\ReflectionBasedAbstractFactory;
 use SELN\App\Core\Authentication\JWTService;
 use SELN\App\Core\Authentication\JWTServiceFactory;
 use SELN\App\Core\Doctrine\AnnotationReaderFactory;
+use SELN\App\Core\Translator\TranslatorFactory;
+use Symfony\Component\Translation\Translator;
 
 /**
  * The configuration provider for the App module
@@ -34,7 +36,8 @@ class ConfigProvider
             'dependencies' => [
                 'factories' => [
                     JWTService::class => JWTServiceFactory::class,
-                    Reader::class => AnnotationReaderFactory::class
+                    Reader::class => AnnotationReaderFactory::class,
+                    Translator::class => TranslatorFactory::class
                 ],
                 'aliases' => [
 
