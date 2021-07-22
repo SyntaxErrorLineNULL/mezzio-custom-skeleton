@@ -9,7 +9,11 @@ declare(strict_types=1);
 namespace SELN\App;
 
 
+use Doctrine\Common\Annotations\Reader;
 use Laminas\ServiceManager\AbstractFactory\ReflectionBasedAbstractFactory;
+use SELN\App\Core\Authentication\JWTService;
+use SELN\App\Core\Authentication\JWTServiceFactory;
+use SELN\App\Core\Doctrine\AnnotationReaderFactory;
 
 /**
  * The configuration provider for the App module
@@ -29,7 +33,8 @@ class ConfigProvider
         return [
             'dependencies' => [
                 'factories' => [
-
+                    JWTService::class => JWTServiceFactory::class,
+                    Reader::class => AnnotationReaderFactory::class
                 ],
                 'aliases' => [
 
