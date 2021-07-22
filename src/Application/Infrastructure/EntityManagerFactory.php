@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace SELN\App\Core\Doctrine;
+namespace SELN\App\Application\Infrastructure;
 
 
 use Doctrine\Common\EventManager;
