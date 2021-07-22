@@ -4,6 +4,11 @@ declare(strict_types=1);
 
 namespace SELN\App\Application;
 
+use Doctrine\ORM\EntityManagerInterface;
+use SELN\App\Application\Infrastructure\EntityManagerFactory;
+use SELN\App\Application\Infrastructure\Flusher;
+use SELN\App\Application\Infrastructure\FlusherFactory;
+
 /**
  * The configuration provider for the App module
  *
@@ -20,8 +25,14 @@ class ConfigProvider
     public function __invoke(): array
     {
         return [
-            'dependencies' => $this->getDependencies(),
-            'templates'    => $this->getTemplates(),
+            'dependencies' => [
+                'factories' => [
+                    EntityManagerInterface::class => EntityManagerFactory::class,
+                    
+                    
+                    Flusher::class => FlusherFactory::class
+                ]
+            ]
         ];
     }
 
