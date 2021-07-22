@@ -17,9 +17,11 @@ use Laminas\ServiceManager\Factory\FactoryInterface;
 
 class JWTServiceFactory implements FactoryInterface
 {
-
     /**
-     * @inheritDoc
+     * @param ContainerInterface $container
+     * @param string $requestedName
+     * @param array|null $options
+     * @return JWTService
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null): JWTService
     {
