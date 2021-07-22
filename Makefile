@@ -1,4 +1,4 @@
-init: down build up composer-install
+init: down build up composer-install init-db
 up:
 	docker-compose -f docker-compose.yaml up -d
 down:
@@ -9,3 +9,9 @@ composer-update:
 	docker-compose -f docker-compose.yaml run --rm php-cli composer update
 build:
 	docker-compose -f docker-compose.yaml build
+init-db:
+	docker-compose -f docker-compose.yml run --rm php-cli vendor/bin/doctrine orm:schema-tool:drop --force && \
+    docker-compose -f docker-compose.yml run --rm php-cli vendor/bin/doctrine orm:schema-tool:create
+clear-cache:
+	docker-compose -f docker-compose.yml run --rm php-cli vendor/bin/doctrine orm:clear-cache:metadata && \
+	docker-compose -f docker-compose.yml run --rm php-cli vendor/bin/doctrine orm:clear-cache:query
