@@ -47,6 +47,14 @@ return function (Application $app, MiddlewareFactory $factory, ContainerInterfac
     // This middleware registers the Mezzio\Router\RouteResult request attribute.
     $app->pipe(RouteMiddleware::class);
 
+    $app->pipe(new Tuupola\Middleware\CorsMiddleware([
+        "origin" => ["*"],
+        "methods" => ["GET", "POST", "PATCH", "DELETE"],
+        "headers.allow" => ['Content-Type', 'Authorization'],
+        "headers.expose" => [],
+        "credentials" => false,
+    ]));
+
     // The following handle routing failures for common conditions:
     // - HEAD request but no routes answer that method
     // - OPTIONS request but no routes answer that method
@@ -54,7 +62,7 @@ return function (Application $app, MiddlewareFactory $factory, ContainerInterfac
     // Order here matters; the MethodNotAllowedMiddleware should be placed
     // after the Implicit*Middleware.
     $app->pipe(ImplicitHeadMiddleware::class);
-    $app->pipe(ImplicitOptionsMiddleware::class);
+    #$app->pipe(ImplicitOptionsMiddleware::class);
     $app->pipe(MethodNotAllowedMiddleware::class);
 
     // Seed the UrlHelper with the routing results:
