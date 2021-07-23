@@ -29,13 +29,13 @@ class EntityManagerFactory implements FactoryInterface
     {
         # https://www.doctrine-project.org/projects/doctrine-orm/en/2.9/reference/advanced-configuration.html - example
 
-        $setting = $container->get('config')['doctrine'];
+        $setting = $container->get('config');
 
         $configurator = new Configuration();
-        $configurator->setProxyDir($setting['proxy_dir']);
-        $configurator->setProxyNamespace($setting['proxy_namespace']);
+        $configurator->setProxyDir($setting['doctrine']['proxy_dir']);
+        $configurator->setProxyNamespace($setting['doctrine']['proxy_namespace']);
 
-        $setMetadataDriverImpl = $configurator->newDefaultAnnotationDriver($setting['metadata_dirs'], $setting['simpleAnnotationReader']);
+        $setMetadataDriverImpl = $configurator->newDefaultAnnotationDriver(['src/Application/Domain'], $setting['doctrine']['simpleAnnotationReader']);
         $configurator->setMetadataDriverImpl($setMetadataDriverImpl);
 
         $configurator->setNamingStrategy(new UnderscoreNamingStrategy(CASE_LOWER, true));
@@ -46,12 +46,12 @@ class EntityManagerFactory implements FactoryInterface
 
         $eventManager = new EventManager();
 
-        foreach ($setting['subscribers'] as $name) {
+        foreach ($setting['doctrine']['subscribers'] as $name) {
             /** @var EventSubscriber $subscriber */
             $subscriber = $container->get($name);
             $eventManager->addEventSubscriber($subscriber);
         }
 
-        return EntityManager::create($setting['connection'], $configurator, $eventManager);
+        return EntityManager::create($setting['doctrine']['connection'], $configurator, $eventManager);
     }
 }
