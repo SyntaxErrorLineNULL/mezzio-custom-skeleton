@@ -27,8 +27,8 @@ $aggregator = new ConfigAggregator([
     \Laminas\Diactoros\ConfigProvider::class,
 
     /** Start default App module config */
-    \SELN\App\Application\ConfigProvider::class,
     \SELN\App\ConfigProvider::class,
+    \SELN\App\Application\ConfigProvider::class,
     /** end module config */
 
     // Load application config in a pre-defined order in such a way that local settings
