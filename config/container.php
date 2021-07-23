@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
-use JSoumelidis\SymfonyDI\Config\Config;
-use JSoumelidis\SymfonyDI\Config\ContainerFactory;
+use Laminas\ServiceManager\ServiceManager;
 
 $config  = require realpath(__DIR__) . '/config.php';
-$factory = new ContainerFactory();
+$dependencies = $config['dependencies'];
+$dependencies['services']['config'] = $config;
 
-return $factory(new Config($config));
+// Build container
+return new ServiceManager($dependencies);
