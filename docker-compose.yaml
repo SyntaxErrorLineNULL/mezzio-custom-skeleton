@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   nginx:
-    container_name: mezzio_nginx_dev
+    container_name: seln_nginx_dev-container
     image: nginx
     volumes:
       - ./docker/nginx/:/etc/nginx/conf.d
@@ -13,7 +13,7 @@ services:
       - '8000:80'
 
   php-fpm:
-    container_name: mezzio_php-fpm
+    container_name: seln_php-fpm-container
     build:
       context: docker
       dockerfile: php-fpm/Dockerfile
@@ -29,7 +29,7 @@ services:
     working_dir: /app
 
   php-cli:
-    container_name: mezzio_php-cli
+    container_name: seln_php-cli-container
     build:
       context: docker
       dockerfile: php-cli/Dockerfile
