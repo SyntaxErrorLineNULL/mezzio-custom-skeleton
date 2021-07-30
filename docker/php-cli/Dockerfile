@@ -1,4 +1,4 @@
-FROM php:8.0-cli-alpine
+FROM php:8.0-cli-alpine3.13
 
 RUN apk add --no-cache autoconf g++ make
 
