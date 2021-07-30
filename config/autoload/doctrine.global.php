@@ -16,6 +16,7 @@ return [
         // you should add any other path containing annotated entity classes
         # TODO: fix metadata
         'metadata_dirs' => [__DIR__ . '../../src/Application/Domain'],
+        'dev_mode' => false,
         'subscribers' => [],
         'connection' => [
             'driver' => 'pdo_pgsql',
