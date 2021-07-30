@@ -8,14 +8,14 @@ declare(strict_types=1);
 
 return [
     'doctrine' => [
-        'cache_dir' => __DIR__ . '../../data/doctrine/cache',
-        'proxy_dir' => __DIR__ . '../../data/doctrine',
+        'cache_dir' => '../../data/doctrine/cache',
+        'proxy_dir' => 'data/doctrine',
         'proxy_namespace' => 'SELN\\App\\Doctrine\\Proxy\\',
         'simpleAnnotationReader' => false,
 
         // you should add any other path containing annotated entity classes
         # TODO: fix metadata
-        'metadata_dirs' => [__DIR__ . '../../src/Application/Domain'],
+        'metadata_dirs' => 'src/Application/Domain',
         'dev_mode' => false,
         'subscribers' => [],
         'connection' => [
