@@ -13,6 +13,7 @@ use Doctrine\Common\EventManager;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Configuration;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Mapping\Driver\AttributeDriver;
 use Doctrine\ORM\Mapping\UnderscoreNamingStrategy;
 use Doctrine\ORM\ORMException;
 use Interop\Container\ContainerInterface;
@@ -35,14 +36,15 @@ class EntityManagerFactory implements FactoryInterface
         $configurator->setProxyDir($setting['doctrine']['proxy_dir']);
         $configurator->setProxyNamespace($setting['doctrine']['proxy_namespace']);
 
-        $setMetadataDriverImpl = $configurator->newDefaultAnnotationDriver(['src/Application/Domain'], $setting['doctrine']['simpleAnnotationReader']);
-        $configurator->setMetadataDriverImpl($setMetadataDriverImpl);
+        $configurator->setMetadataDriverImpl(new AttributeDriver(['src/Application/Domain']));
+        /*$setMetadataDriverImpl = $configurator->newDefaultAnnotationDriver(['src/Application/Domain'], $setting['doctrine']['simpleAnnotationReader']);
+        $configurator->setMetadataDriverImpl($setMetadataDriverImpl);*/
 
         $configurator->setNamingStrategy(new UnderscoreNamingStrategy(CASE_LOWER, true));
 
-        $configurator->setAutoGenerateProxyClasses(
+        /*$configurator->setAutoGenerateProxyClasses(
             (bool)$setting[ConfigAggregator::ENABLE_CACHE]
-        );
+        );*/
 
         $eventManager = new EventManager();
 
