@@ -17,7 +17,6 @@ use Doctrine\ORM\Mapping\Driver\AttributeDriver;
 use Doctrine\ORM\Mapping\UnderscoreNamingStrategy;
 use Doctrine\ORM\ORMException;
 use Interop\Container\ContainerInterface;
-use Laminas\ConfigAggregator\ConfigAggregator;
 use Laminas\ServiceManager\Factory\FactoryInterface;
 
 class EntityManagerFactory implements FactoryInterface
