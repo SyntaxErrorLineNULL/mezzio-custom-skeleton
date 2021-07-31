@@ -23,7 +23,7 @@ services:
       DB_PASSWORD: secret
       DB_NAME: app
     ports:
-      - 8080:8080
+      - "8080:8080"
     volumes:
       - ./:/app
     working_dir: /app
