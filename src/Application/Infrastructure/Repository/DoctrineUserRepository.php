@@ -60,6 +60,6 @@ class DoctrineUserRepository extends EntityRepository implements UserRepository
      */
     public function findByEmail(string $email): ?User
     {
-        $this->findOneBy(['email' => $email]);
+        return $this->findOneBy(['email' => $email]);
     }
 }
