@@ -51,7 +51,7 @@ class DoctrineUserRepository extends EntityRepository implements UserRepository
      */
     public function getAll(): array
     {
-        $this->findAll();
+        return $this->findAll();
     }
 
     /**
