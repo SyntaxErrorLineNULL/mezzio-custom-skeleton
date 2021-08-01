@@ -6,14 +6,12 @@
 
 declare(strict_types=1);
 
-namespace SELN\App\Core\Authentication;
+namespace SELN\App\Core\Factory;
 
 
 use Interop\Container\ContainerInterface;
-use Interop\Container\Exception\ContainerException;
-use Laminas\ServiceManager\Exception\ServiceNotCreatedException;
-use Laminas\ServiceManager\Exception\ServiceNotFoundException;
 use Laminas\ServiceManager\Factory\FactoryInterface;
+use SELN\App\Core\Authentication\JWTService;
 
 class JWTServiceFactory implements FactoryInterface
 {
