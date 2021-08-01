@@ -60,6 +60,7 @@
         "ramsey/uuid": "^4.1",
         "symfony/cache": "^5.3",
         "symfony/filesystem": "^5.3",
+        "symfony/property-info": "^5.3",
         "symfony/serializer": "^5.3",
         "symfony/translation": "^5.3",
         "symfony/validator": "^5.3",
