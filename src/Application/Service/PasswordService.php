@@ -24,8 +24,6 @@ class PasswordService
 
     public function hash(string $password): string
     {
-        Assert::notEmpty($password);
-
         $hash = password_hash($password, PASSWORD_ARGON2ID, [
             'value' => $this->value
         ]);
