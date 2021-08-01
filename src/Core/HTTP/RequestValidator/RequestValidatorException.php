@@ -11,19 +11,21 @@ use Symfony\Component\Validator\ConstraintViolationListInterface;
 
 class RequestValidatorException extends \Exception
 {
-    private ConstraintViolationListInterface $violations;
+    /**
+     * @var array
+     */
+    private array $violations;
 
-    public function __construct(
-        ConstraintViolationListInterface $violations,
-        string $message = 'Invalid request',
-        int $code = 0,
-        \Throwable $previous = null
-    ) {
-        parent::__construct($message, $code, $previous);
+    /**
+     * @param array $violations
+     */
+    public function __construct(array $violations)
+    {
         $this->violations = $violations;
+        parent::__construct('Object validation failed');
     }
 
-    public function getViolations(): ConstraintViolationListInterface
+    public function getViolations(): array
     {
         return $this->violations;
     }
