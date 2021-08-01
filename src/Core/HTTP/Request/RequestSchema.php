@@ -9,6 +9,7 @@ namespace SELN\App\Core\HTTP\Request;
 
 use Psr\Http\Message\ServerRequestInterface;
 use SELN\App\Core\HTTP\RequestValidator\RequestValidator;
+use SELN\App\Core\HTTP\RequestValidator\RequestValidatorException;
 use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
@@ -34,8 +35,16 @@ class RequestSchema
         $this->requestValidator = $requestValidator;
     }
 
-    public function getRequestProperty(string $schema, ServerRequestInterface $request)
+    /**
+     * @param string $schema
+     * @param ServerRequestInterface $request
+     * @return object
+     * @throws RequestValidatorException
+     */
+    public function getRequestProperty(string $schema, ServerRequestInterface $request): object
     {
         $schema = $this->serializer->deserialize($request->getBody(), $schema, self::TYPE);
+        $this->requestValidator->validate($schema);
+        return $schema;
     }
 }
