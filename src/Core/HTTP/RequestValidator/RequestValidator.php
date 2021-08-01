@@ -31,7 +31,7 @@ class RequestValidator
      * @param ConstraintViolationListInterface $object
      * @return array
      */
-    public function getMessage(ConstraintViolationListInterface $object): array
+    private function getMessage(ConstraintViolationListInterface $object): array
     {
         $messages = [];
 
