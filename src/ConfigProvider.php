@@ -13,7 +13,9 @@ use Doctrine\Common\Annotations\Reader;
 use Laminas\ServiceManager\AbstractFactory\ReflectionBasedAbstractFactory;
 use SELN\App\Core\Doctrine\AnnotationReaderFactory;
 use SELN\App\Core\Translator\TranslatorFactory;
+use SELN\App\Core\Validator\ValidatorFactory;
 use Symfony\Component\Translation\Translator;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
  * The configuration provider for the App module
@@ -34,7 +36,8 @@ class ConfigProvider
             'dependencies' => [
                 'factories' => [
                     Reader::class => AnnotationReaderFactory::class,
-                    Translator::class => TranslatorFactory::class
+                    Translator::class => TranslatorFactory::class,
+                    ValidatorInterface::class => ValidatorFactory::class
                 ],
                 'aliases' => [
 
