@@ -8,7 +8,7 @@ declare(strict_types=1);
 
 return [
     'doctrine' => [
-        'cache_dir' => '../../data/doctrine/cache',
+        'cache_dir' => 'data/doctrine/cache',
         'proxy_dir' => 'data/doctrine',
         'proxy_namespace' => 'SELN\\App\\Doctrine\\Proxy\\',
         'simpleAnnotationReader' => false,
