@@ -42,12 +42,10 @@ class ConfigProvider
                 'aliases' => [
 
                 ],
-                'abstract_factories' => [
-                    ReflectionBasedAbstractFactory::class
-                ]
+                'abstract_factories' => [ReflectionBasedAbstractFactory::class]
             ],
             'validators' => [
-                // TODO: ??
+                'abstract_factories' => [ReflectionBasedAbstractFactory::class]
             ]
         ];
     }
