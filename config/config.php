@@ -28,6 +28,7 @@ $aggregator = new ConfigAggregator([
 
     /** Start default App module config */
     \SELN\App\ConfigProvider::class,
+    \SELN\App\Api\ConfigProvider::class,
     \SELN\App\Application\ConfigProvider::class,
     /** end module config */
 
