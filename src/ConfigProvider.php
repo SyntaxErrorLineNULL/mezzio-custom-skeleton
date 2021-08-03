@@ -12,10 +12,6 @@ namespace SELN\App;
 use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\Cache\Psr6\DoctrineProvider;
 use Laminas\ServiceManager\AbstractFactory\ReflectionBasedAbstractFactory;
-use Phpfastcache\CacheManager;
-use Phpfastcache\Drivers\Files\Config;
-use Psr\Cache\CacheItemPoolInterface;
-use Psr\Container\ContainerInterface;
 use SELN\App\Core\Doctrine\AnnotationReaderFactory;
 use SELN\App\Core\Doctrine\DoctrineCacheFactory;
 use SELN\App\Core\Translator\TranslatorFactory;
@@ -41,26 +37,18 @@ class ConfigProvider
          */
         return [
             'dependencies' => [
+                'abstract_factories' => [ReflectionBasedAbstractFactory::class],
                 'factories' => [
                     Reader::class => AnnotationReaderFactory::class,
                     Translator::class => TranslatorFactory::class,
                     ValidatorInterface::class => ValidatorFactory::class,
-                    CacheItemPoolInterface::class => function () {
-                        return CacheManager::getInstance('files', new Config([
-                            'securityKey' => 'fastcache',
-                            "path" => '/app/data/cache',
-                        ]));
-                    },
-                    Cache::class => fn(ContainerInterface $container) => DoctrineProvider::wrap($container->get(CacheItemPoolInterface::class)),
+                    Cache::class => DoctrineCacheFactory::class,
                 ],
                 'aliases' => [
 
                 ],
-                'abstract_factories' => [ReflectionBasedAbstractFactory::class]
             ],
-            'validators' => [
-                'abstract_factories' => [ReflectionBasedAbstractFactory::class]
-            ]
+            'validators' => []
         ];
     }
 
