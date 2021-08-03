@@ -1,1 +1,2 @@
-Copyright (c) 2020 Laminas Project a Series of LF Projects, LLC. (https://getlaminas.org/)
+Mezzio custom skeleton
+Copyright (c) 2021 SyntaxErrorLineNULL cyberorange16@gmail.com
