@@ -16,17 +16,16 @@ class JWTService
     /**
      * JWTService constructor.
      * @param string $secret
-     * @param string $algorithm
      */
-    public function __construct(public string $secret, public string $algorithm = 'HS512') {}
+    public function __construct(public string $secret) {}
 
     public function encode(array $value): string
     {
-        return JWT::encode($value, $this->secret, $this->algorithm);
+        return JWT::encode($value, $this->secret, 'HS512');
     }
 
     public function decode(string $key): object
     {
-        return JWT::decode($key, $this->secret, [$this->algorithm]);
+        return JWT::decode($key, $this->secret, ['HS512']);
     }
 }
