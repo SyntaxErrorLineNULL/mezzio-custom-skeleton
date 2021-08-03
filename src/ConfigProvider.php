@@ -44,11 +44,11 @@ class ConfigProvider
                     ValidatorInterface::class => ValidatorFactory::class,
                     Cache::class => DoctrineCacheFactory::class,
                 ],
-                'aliases' => [
-
-                ],
+                'aliases' => [],
             ],
-            'validators' => []
+            'validators' => [
+                'abstract_factories' => [ReflectionBasedAbstractFactory::class]
+            ]
         ];
     }
 
