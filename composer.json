@@ -70,6 +70,13 @@
         "vlucas/phpdotenv": "^5.3"
     },
     "require-dev": {
+        "codeception/codeception": "^4.1",
+        "codeception/module-doctrine2": "^1.0",
+        "codeception/module-asserts": "^1.0.0",
+        "codeception/module-phpbrowser": "^1.0.0",
+        "codeception/module-mezzio": "2.0.2",
+        "doctrine/data-fixtures": "^1.5",
+        "codeception/module-rest": "^1.2",
         "laminas/laminas-development-mode": "^3.3.0",
         "mezzio/mezzio-tooling": "^1.4.0",
         "phpspec/prophecy": "^1.10.3",
