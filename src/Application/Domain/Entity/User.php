@@ -13,6 +13,7 @@ use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\Table;
 use SELN\App\Application\Infrastructure\Repository\DoctrineUserRepository;
+use SELN\App\Application\Service\PasswordService;
 
 #[Entity(repositoryClass: DoctrineUserRepository::class)]
 #[Table(name: '`user`')]
@@ -38,15 +39,16 @@ class User
      * @param string|null $name
      * @param string $email
      * @param string|null $phone
-     * @param string $passwordHash
+     * @param PasswordService $passwordService
+     * @param string $password
      */
-    public function __construct(string $id, ?string $name, string $email, ?string $phone, string $passwordHash)
+    public function __construct(string $id, ?string $name, string $email, ?string $phone, PasswordService $passwordService, string $password)
     {
         $this->id = $id;
         $this->name = $name;
         $this->email = $email;
         $this->phone = $phone;
-        $this->passwordHash = $passwordHash;
+        $this->passwordHash = $passwordService->hash($password);
         $this->createdAt = new \DateTimeImmutable();
     }
 
