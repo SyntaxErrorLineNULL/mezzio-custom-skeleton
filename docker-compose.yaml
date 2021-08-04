@@ -10,7 +10,7 @@ services:
     links:
       - php-fpm
     ports:
-      - '8000:80'
+      - ${NGINX_PORT}
 
   php-fpm:
     container_name: seln_php-fpm-container
@@ -18,12 +18,12 @@ services:
       context: docker
       dockerfile: php-fpm/Dockerfile
     environment:
-      DB_HOST: api-postgres
-      DB_USER: app
-      DB_PASSWORD: secret
-      DB_NAME: app
+      DB_HOST: ${DB_HOST}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
     ports:
-      - "8080:8080"
+      - ${APP_PORT}
     volumes:
       - ./:/app
     working_dir: /app
@@ -34,18 +34,18 @@ services:
       context: docker
       dockerfile: php-cli/Dockerfile
     environment:
-      DB_HOST: api-postgres
-      DB_USER: app
-      DB_PASSWORD: secret
-      DB_NAME: app
+      DB_HOST: ${DB_HOST}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
     volumes:
       - ./:/app
 
   api-postgres:
     image: postgres:13.1-alpine
     environment:
-      POSTGRES_USER: app
-      POSTGRES_PASSWORD: secret
-      POSTGRES_DB: app
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
     ports:
-      - "127.0.0.1:5432:5432"
+      - ${DB_PORT}
