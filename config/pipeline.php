@@ -55,6 +55,7 @@ return function (Application $app, MiddlewareFactory $factory, ContainerInterfac
         "credentials" => false,
     ]));
 
+    $app->pipe(\SELN\App\Core\HTTP\Middleware\AuthenticationMiddleware::class);
     // The following handle routing failures for common conditions:
     // - HEAD request but no routes answer that method
     // - OPTIONS request but no routes answer that method
