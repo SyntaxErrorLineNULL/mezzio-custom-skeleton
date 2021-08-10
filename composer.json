@@ -62,6 +62,7 @@
         "swiftmailer/swiftmailer": "^6.2",
         "symfony/cache": "^5.3",
         "symfony/filesystem": "^5.3",
+        "symfony/mailer": "^5.3",
         "symfony/property-access": "^5.3",
         "symfony/property-info": "^5.3",
         "symfony/serializer": "^5.3",
