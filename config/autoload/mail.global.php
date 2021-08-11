@@ -12,6 +12,5 @@ return [
         'user' => getenv('MAILER_USERNAME'),
         'password' => getenv('MAILER_PASSWORD'),
         'encryption' => getenv('MAILER_ENCRYPTION'),
-        'from' => getenv('MAILER_FROM_EMAIL')
     ]
 ];
