@@ -7,10 +7,10 @@ declare(strict_types=1);
 
 return [
     'mailer' => [
-        'host' => getenv('MAILER_HOST'),
-        'port' => getenv('MAILER_PORT'),
-        'user' => getenv('MAILER_USERNAME'),
-        'password' => getenv('MAILER_PASSWORD'),
-        'encryption' => getenv('MAILER_ENCRYPTION'),
+        'host' => $_ENV['MAILER_HOST'],
+        'port' => (int)$_ENV['MAILER_PORT'],
+        'user' => $_ENV['MAILER_USERNAME'],
+        'password' => $_ENV['MAILER_PASSWORD'],
+        'encryption' => $_ENV['MAILER_ENCRYPTION']
     ]
 ];
