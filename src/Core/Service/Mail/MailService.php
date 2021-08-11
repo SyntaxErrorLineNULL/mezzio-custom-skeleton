@@ -18,13 +18,13 @@ class MailService
         private \Swift_Mailer $mailer
     ) {}
 
-    public function send(string $email, string $message): void
+    public function send(string $email, string $body): void
     {
         $message = (new \Swift_Message())
-            ->setFrom()
-            ->setTo()
-            ->setBody('hello')
+            ->setFrom('cyberorange16@gmail.com')
+            ->setTo($email)
+            ->setBody($body)
         ;
-        $this->mailer->send();
+        $this->mailer->send($message);
     }
 }
