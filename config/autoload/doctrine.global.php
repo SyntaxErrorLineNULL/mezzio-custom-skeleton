@@ -20,10 +20,10 @@ return [
         'subscribers' => [],
         'connection' => [
             'driver' => 'pdo_pgsql',
-            'host' => getenv('DB_HOST'),
-            'user' => getenv('DB_USER'),
-            'password' => getenv('DB_PASSWORD'),
-            'dbname' => getenv('DB_NAME'),
+            'host' => $_ENV['DB_HOST'],
+            'user' => $_ENV['DB_USER'],
+            'password' => $_ENV['DB_PASSWORD'],
+            'dbname' => $_ENV['DB_NAME'],
             'charset' => 'utf-8',
             'default_table_options' => [
                 'charset' => 'utf8',
