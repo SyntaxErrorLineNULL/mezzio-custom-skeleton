@@ -14,8 +14,11 @@ use Doctrine\Common\Cache\Psr6\DoctrineProvider;
 use Laminas\ServiceManager\AbstractFactory\ReflectionBasedAbstractFactory;
 use SELN\App\Core\Doctrine\AnnotationReaderFactory;
 use SELN\App\Core\Doctrine\DoctrineCacheFactory;
+use SELN\App\Core\Service\Mail\SwiftMailerFactory;
+use SELN\App\Core\Service\Mail\TransportFactory;
 use SELN\App\Core\Translator\TranslatorFactory;
 use SELN\App\Core\Validator\ValidatorFactory;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Translation\Translator;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Doctrine\Common\Cache\Cache;
@@ -43,6 +46,8 @@ class ConfigProvider
                     Translator::class => TranslatorFactory::class,
                     ValidatorInterface::class => ValidatorFactory::class,
                     Cache::class => DoctrineCacheFactory::class,
+                    \Swift_SmtpTransport::class => TransportFactory::class,
+                    \Swift_Mailer::class => SwiftMailerFactory::class
                 ],
                 'aliases' => [],
             ],
