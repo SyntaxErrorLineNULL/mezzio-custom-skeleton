@@ -14,7 +14,7 @@ return [
         'strict_variables' => false,
         'autoescape' => 'html',
         'template_path' => [
-            FilesystemLoader::MAIN_NAMESPACE => __DIR__ . '../../template'
+            FilesystemLoader::MAIN_NAMESPACE => __DIR__ . '/../../template'
         ],
         'cache_dir' => __DIR__ . '../../data/twig/cache'
     ]
