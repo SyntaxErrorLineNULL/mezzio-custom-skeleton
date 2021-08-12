@@ -13,7 +13,7 @@ modules:
         - \Helper\Functional
         - Mezzio:
             recreateApplicationBetweenTests: false
-            container: tests/config/container.functional.php
+            container: tests/App/container.php
             headers:
                 Content-Type: application/json
             - \Helper\DefaultDoctrineProvider:
