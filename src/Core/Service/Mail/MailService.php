@@ -10,21 +10,29 @@ namespace SELN\App\Core\Service\Mail;
 
 use Swift_Mailer;
 use Swift_Message;
-use Swift_RfcComplianceException;
+use Twig\Environment;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Error\SyntaxError;
 
 class MailService
 {
-    public function __construct(private Swift_Mailer $mailer) {}
+    public function __construct(private Swift_Mailer $mailer, private Environment $twig) {}
 
-    public function send(string $email, string $body): void
+    /**
+     * @throws RuntimeError
+     * @throws SyntaxError
+     * @throws LoaderError
+     */
+    public function send(string $toEmail, array $body, string $templatePath): void
     {
         $message = (new Swift_Message())
-            ->setFrom('cyberorange16@gmail.com')
-            ->setTo($email)
-            ->setBody($body);
+            ->setFrom(['cyberorange16@gmail.com' => 'Administrator'])
+            ->setTo([$toEmail => 'User'])
+            ->setBody($this->twig->render($templatePath, $body));
 
         if ($this->mailer->send($message) === 0) {
-            throw new MailSendException("Unable to send email to this ${$email} email address.");
+            throw new MailSendException("Unable to send email to this ${$toEmail} email address.");
         }
     }
 }
