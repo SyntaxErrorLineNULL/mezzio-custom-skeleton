@@ -16,12 +16,14 @@ use SELN\App\Core\Doctrine\AnnotationReaderFactory;
 use SELN\App\Core\Doctrine\DoctrineCacheFactory;
 use SELN\App\Core\Service\Mail\SwiftMailerFactory;
 use SELN\App\Core\Service\Mail\TransportFactory;
+use SELN\App\Core\Service\View\TwigFactory;
 use SELN\App\Core\Translator\TranslatorFactory;
 use SELN\App\Core\Validator\ValidatorFactory;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Translation\Translator;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Doctrine\Common\Cache\Cache;
+use Twig\Environment;
 
 /**
  * The configuration provider for the App module
@@ -47,7 +49,8 @@ class ConfigProvider
                     ValidatorInterface::class => ValidatorFactory::class,
                     Cache::class => DoctrineCacheFactory::class,
                     \Swift_SmtpTransport::class => TransportFactory::class,
-                    \Swift_Mailer::class => SwiftMailerFactory::class
+                    \Swift_Mailer::class => SwiftMailerFactory::class,
+                    Environment::class => TwigFactory::class
                 ],
                 'aliases' => [],
             ],
