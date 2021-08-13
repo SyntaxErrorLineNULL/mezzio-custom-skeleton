@@ -12,7 +12,12 @@ use Laminas\ConfigAggregator\ArrayProvider,
 $appConfig = require __DIR__ . '/../../config/config.php';
 
 $configAggregator = new ConfigAggregator([
-    new ArrayProvider($appConfig)
+    new ArrayProvider($appConfig),
+    new ArrayProvider([
+        'jwt' => [
+            'secret' => 'secret-jwt',
+        ]
+    ])
 ]);
 
 $config = $configAggregator->getMergedConfig();
