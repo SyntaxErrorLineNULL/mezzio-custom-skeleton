@@ -1,0 +1,42 @@
+name: Test
+
+on: push
+
+env:
+  REGISTRY: docker.pkg.github.com/SELN/mezzio-custom-skeleton
+  REGISTRY_HOST: docker.pkg.github.com
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Cache composer
+        uses: actions/cache@v2
+        with:
+          path: vendor
+          key: composer-${{ hashFiles('composer.lock') }}
+
+      - name: Docker login
+        uses: azure/docker-login@v1
+        with:
+          login-server: ${{ env.REGISTRY_HOST }}
+          username: SyntaxErrorLineNULL
+          password: ${{ secrets.TOKEN }}
+
+      - name: Pull from registry
+        run: docker-compose pull
+
+      - name: Build images
+        run: make build
+
+      - name: Push to registry
+        run: docker-compose push
+
+      - name: Start containers
+        run: make init
+
+      - name: Functional tests
+        run: make test-functional
