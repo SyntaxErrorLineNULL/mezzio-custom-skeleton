@@ -96,9 +96,9 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "SELN\\App\\Test\\UnitTest": "tests/unit",
-            "SELN\\App\\Test\\Functional": "tests/functional",
-            "SELN\\App\\Test": "tests/_support"
+            "SELN\\App\\Test\\UnitTest\\": "tests/unit",
+            "SELN\\App\\Test\\Functional\\": "tests/functional",
+            "SELN\\App\\Test\\": "tests/_support"
         }
     },
     "scripts": {
