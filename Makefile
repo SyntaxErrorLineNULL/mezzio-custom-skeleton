@@ -15,3 +15,5 @@ init-db:
 clear-cache:
 	docker-compose -f docker-compose.yaml run --rm php-cli vendor/bin/doctrine orm:clear-cache:metadata && \
 	docker-compose -f docker-compose.yaml run --rm php-cli vendor/bin/doctrine orm:clear-cache:query
+test-functional:
+	docker-compose -f docker-compose.yaml run --rm php-cli vendor/bin/codecept run functional $(DIR)
