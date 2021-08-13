@@ -6,21 +6,20 @@
 # Remove this suite if you don't use frameworks
 
 actor: FunctionalTester
-namespace: SELN\App\FunctionalTest
 modules:
     enabled:
         # add a framework module here
         - \Helper\Functional
         - Mezzio:
-            recreateApplicationBetweenTests: false
-            container: tests/App/container.php
-            headers:
-                Content-Type: application/json
-            - \Helper\DefaultDoctrineProvider:
-                depends: Mezzio
-            - REST:
-                depends: Mezzio
-            - Doctrine2:
-                depends:
-                    - \Helper\TestDoctrineProvider
-    step_decorators: ~        
+              recreateApplicationBetweenTests: false
+              container: tests/config/container.php
+              headers:
+                  Content-Type: application/json
+        - \Helper\DefaultDoctrineProvider:
+              depends: Mezzio
+        - REST:
+              depends: Mezzio
+        - Doctrine2:
+              depends:
+                  - \Helper\DefaultDoctrineProvider
+    step_decorators: ~
