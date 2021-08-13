@@ -11,7 +11,7 @@ use Codeception\Lib\Interfaces\DoctrineProvider;
 use Codeception\Module;
 use Doctrine\ORM\EntityManagerInterface;
 
-class TestDoctrineProvider extends Module implements DoctrineProvider
+class DefaultDoctrineProvider extends Module implements DoctrineProvider
 {
 
     public function _getEntityManager()
