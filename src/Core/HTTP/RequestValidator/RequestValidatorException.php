@@ -14,18 +14,18 @@ class RequestValidatorException extends \LogicException
     /**
      * @var array
      */
-    private array $violations;
+    private ConstraintViolationListInterface $violations;
 
     /**
-     * @param array $violations
+     * @param ConstraintViolationListInterface $violations
      */
-    public function __construct(array $violations)
+    public function __construct(ConstraintViolationListInterface $violations)
     {
         $this->violations = $violations;
         parent::__construct('Object validation failed');
     }
 
-    public function getViolations(): array
+    public function getViolations(): ConstraintViolationListInterface
     {
         return $this->violations;
     }
