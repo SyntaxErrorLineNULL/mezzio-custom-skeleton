@@ -13,6 +13,8 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use SELN\App\Core\HTTP\RequestValidator\RequestValidatorException;
+use Symfony\Component\Validator\ConstraintViolationInterface;
+use Symfony\Component\Validator\ConstraintViolationListInterface;
 
 class ValidationExceptionMiddleware implements MiddlewareInterface
 {
@@ -23,8 +25,24 @@ class ValidationExceptionMiddleware implements MiddlewareInterface
             return $handler->handle($request);
         } catch (RequestValidatorException $exception) {
             return new JsonResponse([
-                'message' => $exception->getViolations()
+                'message' => $this->getMessage($exception->getViolations())
             ], 422);
         }
+    }
+
+    /**
+     * @param ConstraintViolationListInterface $object
+     * @return array
+     */
+    private function getMessage(ConstraintViolationListInterface $object): array
+    {
+        $messages = [];
+
+        /** @var ConstraintViolationInterface $item */
+        foreach ($object as $item) {
+            $messages[$item->getPropertyPath()] = $item->getMessage();
+        }
+
+        return $messages;
     }
 }
