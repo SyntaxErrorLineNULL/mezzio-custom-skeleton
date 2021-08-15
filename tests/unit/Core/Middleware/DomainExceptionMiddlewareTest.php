@@ -33,7 +33,7 @@ class DomainExceptionMiddlewareTest extends Unit
         $handler = $this->createStub(RequestHandlerInterface::class);
         $handler->method('handle')->willThrowException(new \DomainException('Test Error'));
 
-        $request = (new ServerRequestFactory())->createServerRequest('POST', 'https://test');
+        $request = (new ServerRequestFactory())->createServerRequest('POST', 'https://localhost');
         $response = $middleware->process($request, $handler);
 
         $this->assertEquals(409, $response->getStatusCode());
