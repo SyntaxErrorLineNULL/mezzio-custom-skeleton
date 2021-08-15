@@ -12,6 +12,7 @@ use Laminas\Diactoros\ResponseFactory;
 use Laminas\Diactoros\ServerRequestFactory;
 use Psr\Http\Server\RequestHandlerInterface;
 use SELN\App\Core\Authentication\JWTService;
+use SELN\App\Core\Authentication\Passport\Exception\DecodeException;
 use SELN\App\Core\Authentication\Passport\Passport;
 use SELN\App\Core\HTTP\Middleware\AuthenticationMiddleware;
 use SELN\App\Test\UnitTest\Core\UnitTemplate;
@@ -45,6 +46,6 @@ class AuthenticationMiddlewareTest extends Unit implements UnitTemplate
 
     public function testException(): void
     {
-
+        //TODO: later..., maybe
     }
 }
