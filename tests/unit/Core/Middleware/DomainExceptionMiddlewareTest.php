@@ -26,4 +26,23 @@ class DomainExceptionMiddlewareTest extends Unit
 
         $this->assertEquals($source, $response);
     }
+
+    public function testException(): void
+    {
+        $middleware = new DomainExceptionMiddleware();
+        $handler = $this->createStub(RequestHandlerInterface::class);
+        $handler->method('handle')->willThrowException(new \DomainException('Test Error'));
+
+        $request = (new ServerRequestFactory())->createServerRequest('POST', 'https://test');
+        $response = $middleware->process($request, $handler);
+
+        $this->assertEquals(409, $response->getStatusCode());
+        $this->assertJson($body = (string)$response->getBody());
+
+        $message = json_decode($body, true);
+
+        $this->assertEquals([
+            'message' => 'Test Error'
+        ], $message);
+    }
 }
