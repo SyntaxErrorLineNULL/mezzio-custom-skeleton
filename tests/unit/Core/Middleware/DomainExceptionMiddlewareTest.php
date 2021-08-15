@@ -12,8 +12,9 @@ use Laminas\Diactoros\ResponseFactory;
 use Laminas\Diactoros\ServerRequestFactory;
 use Psr\Http\Server\RequestHandlerInterface;
 use SELN\App\Core\HTTP\Middleware\DomainExceptionMiddleware;
+use SELN\App\Test\UnitTest\Core\UnitTemplate;
 
-class DomainExceptionMiddlewareTest extends Unit
+class DomainExceptionMiddlewareTest extends Unit implements UnitTemplate
 {
     public function testSuccess(): void
     {
