@@ -13,8 +13,9 @@ use Laminas\Diactoros\ServerRequestFactory;
 use Psr\Http\Server\RequestHandlerInterface;
 use SELN\App\Core\Authentication\Passport\Exception\DecodeException;
 use SELN\App\Core\HTTP\Middleware\AuthExceptionMiddleware;
+use SELN\App\Test\UnitTest\Core\UnitTemplate;
 
-class AuthExceptionMiddlewareTest extends Unit
+class AuthExceptionMiddlewareTest extends Unit implements UnitTemplate
 {
     public function testSuccess(): void
     {
