@@ -21,7 +21,7 @@ class DomainExceptionMiddlewareTest extends Unit
         $handler = $this->createStub(RequestHandlerInterface::class);
         $handler->method('handle')->willReturn($source = (new ResponseFactory())->createResponse());
 
-        $request = (new ServerRequestFactory())->createServerRequest('POST', 'https://test');
+        $request = (new ServerRequestFactory())->createServerRequest('POST', 'http://localhost');
         $response = $middleware->process($request, $handler);
 
         $this->assertEquals($source, $response);
