@@ -9,7 +9,7 @@ namespace SELN\App\Core\HTTP\RequestValidator;
 
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 
-class RequestValidatorException extends \Exception
+class RequestValidatorException extends \LogicException
 {
     /**
      * @var array
