@@ -23,23 +23,8 @@ class RequestValidator
     {
         $violations = $this->validator->validate($object);
         if ($violations->count() > 0) {
-            throw new RequestValidatorException($this->getMessage($violations));
+            throw new RequestValidatorException($violations);
         }
     }
 
-    /**
-     * @param ConstraintViolationListInterface $object
-     * @return array
-     */
-    private function getMessage(ConstraintViolationListInterface $object): array
-    {
-        $messages = [];
-
-        /** @var ConstraintViolationInterface $item */
-        foreach ($object as $item) {
-            $messages[$item->getPropertyPath()] = $item->getMessage();
-        }
-
-        return $messages;
-    }
 }
