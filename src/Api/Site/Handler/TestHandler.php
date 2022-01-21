@@ -18,17 +18,23 @@ use SELN\App\Application\Domain\Entity\User;
 use SELN\App\Application\Domain\Repository\UserRepository;
 use SELN\App\Application\Infrastructure\Flusher;
 use SELN\App\Application\Service\PasswordService;
+use SELN\App\Core\Authentication\JWTService;
+use SELN\App\Core\Authentication\PassportTrait;
 use SELN\App\Core\HTTP\Request\RequestSchema;
 use SELN\App\Core\HTTP\RequestValidator\RequestValidatorException;
+use SELN\App\Core\Service\Mail\MailService;
 
 class TestHandler implements RequestHandlerInterface
 {
+    use PassportTrait;
 
     public function __construct(
         private Flusher $flusher,
         private UserRepository $userRepository,
         private PasswordService $passwordService,
-        private RequestSchema $requestSchema
+        private RequestSchema $requestSchema,
+        private JWTService $service,
+        private MailService $mail
     )
     {
     }
@@ -41,8 +47,10 @@ class TestHandler implements RequestHandlerInterface
         /** @var TestSchema $schema */
         $schema = $this->requestSchema->getRequestProperty(TestSchema::class, $request);
 
+        $userId = $this->checkAuth($request);
+
         $user = new User(
-            Uuid::uuid4()->toString(),
+            $id = Uuid::uuid4()->toString(),
             $schema->name,
             $schema->email,
             $schema->phone,
@@ -52,6 +60,7 @@ class TestHandler implements RequestHandlerInterface
         $this->userRepository->create($user);
         $this->flusher->flush();
 
-        return new JsonResponse("Successful", 201);
+        $this->mail->send($user->email, ['body' => 'message'], 'test.html.twig');
+        return new JsonResponse($userId, 201);
     }
 }
